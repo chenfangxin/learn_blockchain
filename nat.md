@@ -1,0 +1,48 @@
+
+## NAT介绍
+
+内网地址范围： 10.0.0.0~10.255.255.255, 172.16.0.0~172.31.255.255.255, 192.168.0.0~192.168.255.255
+
+网络地址转换(NAT, Network Address Translation)是`RFC3022`定义，用于内网地址向公网地址的转换，以解决公有IP地址稀缺的问题，目前NAT的应用不限于此。
+
+根据要转换的域，NAT可以分为`源NAT`和`目的NAT`。
+
++ 源NAT：基于源地址，主要用于共享公网IP。
++ 目的NAT：基于目的地址，也称为反向NAT或地址映射。是一种`单向`的，针对目的地址的映射，用于内部服务器喜爱嗯外部提供服务。
+
+NAT规则都是应用在接口上的，源NAT与出接口关联；目的NAT与入接口关联。
+
+源NAT分为两大类：基本NAT和网络地址/端口转换(NAPT, Network Address/Port Translation)
+
+基本NAT仅仅将内网地址转换为公网地址，并不修改TCP/UDP端口信息。基本NAT又分为静态NAT(Static NAT)和动态NAT(Dynamic NAT)。
+
++ 静态NAT：内网地址与公网地址一一对应。使用静态NAT场景下，内网主机也可以对外提供服务。
++ 动态NAT：内网地址与公网地址的对应关系是动态的
+
+网络地址/端口转换(NAPT)是指将内部地址映射到外网地址的不同端口上，采用端口复用的方式，实现内网所有主机共用一个合法的外网IP，实现对外网的访问。
+
+NAPT可分为锥形NAT(Cone NAT)和对称NAT(Symmetric NAT)，
+
+锥形NAT又分为：完全锥形NAT(Full Cone), 受限制锥形NAT(Restricted Cone) 和 端口受限制锥形NAT(Port Restricted Cone)。
+
+
+## NAT穿越
+
+目前常用的`NAT穿越`技术如下：
+
++ STUN: Session Traversal Utilities for NAT/Simple Traversal of UDP Through NAT
++ TURN: Traversal Using Relays around NAT
++ ICE: Iteractive Connectivity Establishment
+
+#### STUN介绍
+
+有两个协议的缩写是STUN，分别是`RFC3489(Simple Traversal of UDP Through NAT)`和`RFC5389(Session Traversal Utilities for NAT)`。
+
+
+#### TURN介绍
+
+`RFC57766(Traversal Using Relays around NAT)`
+
+#### ICE介绍
+
+
