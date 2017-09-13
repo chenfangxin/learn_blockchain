@@ -8,14 +8,7 @@ P2P通讯协议主要处理`NAT穿越`的问题。
 
 网络地址转换(NAT, Network Address Translation)是`RFC3022`定义，用于内网地址向公网地址的转换，以解决公有IP地址稀缺的问题，目前NAT的应用不限于此。
 
-NAT可以分为`源NAT`和`目的NAT`。
-
-+ 源NAT：转换报文的源地址，主要用于共享公网IP。
-+ 目的NAT：转换报文的目的地址，也称为`反向NAT`或`地址映射`，用于内部服务器向外部提供服务。
-
-## 源NAT
-
-源NAT分为两大类：`基本NAT`和`网络地址/端口转换`(NAPT, Network Address/Port Translation)
+根据`RFC3022`，NAT分为两大类：`基本NAT`和`网络地址/端口转换`(NAPT, Network Address/Port Translation)
 
 `基本NAT`仅仅将内网地址转换为公网地址，并不修改TCP/UDP端口信息。基本NAT又分为`静态NAT(Static NAT)`和`动态NAT(Dynamic NAT)`。
 
@@ -24,11 +17,9 @@ NAT可以分为`源NAT`和`目的NAT`。
 
 `网络地址/端口转换(NAPT)`是指将内部地址映射到外网地址的不同端口上，采用端口复用的方式，实现内网所有主机共用*一个*合法的外网IP，实现对外网的访问。
 
-NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。
+NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是指同一个内网地址和端口发出的包，经过NAT之后会转换为同一个外部地址和端口。
 
 锥形NAT又分为：`完全锥形NAT(Full Cone NAT)`, `受限制锥形NAT(Restricted Cone NAT)`和`端口受限制锥形NAT(Port Restricted Cone NAT)`。
-
-## 目的NAT
 
 
 ## NAT穿越
@@ -50,4 +41,5 @@ NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。
 
 #### ICE介绍
 
+`RFC5245(Iteractive Connectivity Establishment)`
 
