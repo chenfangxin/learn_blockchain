@@ -12,12 +12,12 @@ P2P通讯协议主要处理`NAT穿越`的问题。
 
 `基本NAT`仅仅将内网地址转换为公网地址，并不修改TCP/UDP端口信息。基本NAT又分为`静态NAT(Static NAT)`和`动态NAT(Dynamic NAT)`。
 
-+ 静态NAT：内网地址与公网地址一一对应。静态NAT实际上是双向的，在使用静态NAT场景下，内网主机也可以对外提供服务。
-+ 动态NAT：内网地址与公网地址的对应关系是动态的
++ 静态NAT：内网地址与公网地址静态一一对应。静态NAT实际上是双向的，在使用静态NAT场景下，内网主机也可以对外提供服务。
++ 动态NAT：内网地址与公网地址的对应关系是动态的。
 
 `网络地址/端口转换(NAPT)`是指将内部地址映射到外网地址的不同端口上，采用端口复用的方式，实现内网所有主机共用*一个*合法的外网IP，实现对外网的访问。
 
-NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是指同一个内网地址和端口发出的包，经过NAT之后会转换为同一个外部地址和端口。
+NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是指同一个内网地址和端口发出的包，经过NAT之后会转换为同一个外部地址和端口，不具备这一特性的NAPT，就被称为`对称NAT`。
 
 锥形NAT又分为：`完全锥形NAT(Full Cone NAT)`, `受限制锥形NAT(Restricted Cone NAT)`和`端口受限制锥形NAT(Port Restricted Cone NAT)`。
 
@@ -37,7 +37,7 @@ NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是
 
 #### TURN介绍
 
-`RFC57766(Traversal Using Relays around NAT)`
+`RFC5766(Traversal Using Relays around NAT)`
 
 #### ICE介绍
 
