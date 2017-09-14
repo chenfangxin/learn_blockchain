@@ -15,6 +15,8 @@ P2P通讯协议主要处理`NAT穿越`的问题。
 + 静态NAT：内网地址与公网地址静态一一对应。静态NAT实际上是双向的，在使用静态NAT场景下，内网主机也可以对外提供服务。
 + 动态NAT：内网地址与公网地址的对应关系是动态的。
 
+在运行时，`基本NAT`只修改数据包的IP地址，而且内网地址与外网地址是对应的，并没有节省公网地址，所以现在很少被使用。绝大多数NAT都是`NAPT`。
+
 `网络地址/端口转换(NAPT)`是指将内部地址映射到外网地址的不同端口上，采用端口复用的方式，实现内网所有主机共用*一个*合法的外网IP，实现对外网的访问。
 
 NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是指同一个内网地址和端口发出的包，经过NAT之后会转换为同一个外部地址和端口，不具备这一特性的NAPT，就被称为`对称NAT`。
@@ -22,10 +24,13 @@ NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是
 锥形NAT又分为：`完全锥形NAT(Full Cone NAT)`, `受限制锥形NAT(Restricted Cone NAT)`和`端口受限制锥形NAT(Port Restricted Cone NAT)`。
 
 
-## NAT穿越
+## NAT穿越(NAT Traversal)
+
 
 目前常用的`NAT穿越`技术如下：
 
++ UPnp
++ ALG
 + STUN: Session Traversal Utilities for NAT/Simple Traversal of UDP Through NAT
 + TURN: Traversal Using Relays around NAT
 + ICE: Iteractive Connectivity Establishment
