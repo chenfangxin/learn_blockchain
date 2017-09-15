@@ -29,8 +29,8 @@ NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是
 
 目前常用的`NAT穿越`技术如下：
 
-+ UPnp
-+ ALG
++ UPnP: Universal Plug an Play
++ ALG: Application Layer Gateway
 + STUN: Session Traversal Utilities for NAT/Simple Traversal of UDP Through NAT
 + TURN: Traversal Using Relays around NAT
 + ICE: Iteractive Connectivity Establishment
