@@ -13,7 +13,7 @@
 
 `netfilter`运行流程如下图所示：
 
-!(netfilter)[./img/netfilter.png]
+![netfilter](./img/netfilter.png)
   
   `netfilter`框架中，用表(table)来代表要实现的功能。目前`netfilter`中预定义了5个表，分别是：
 
