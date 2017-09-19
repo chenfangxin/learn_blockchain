@@ -21,11 +21,15 @@ P2P通讯协议主要处理`NAT穿越`的问题。
 
 NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是指同一个内网地址和端口发出的包，经过NAT之后会转换为同一个外部地址和端口，不具备这一特性的NAPT，就被称为`对称NAT`。
 
-锥形NAT又分为：`完全锥形NAT(Full Cone NAT)`, `受限制锥形NAT(Restricted Cone NAT)`和`端口受限制锥形NAT(Port Restricted Cone NAT)`。
+锥形NAT又分为：`完全锥形NAT(Full Cone NAT)`, `受限制锥形NAT(Restricted Cone NAT)`和`端口受限制锥形NAT(Port Restricted Cone NAT)`。举个例子来说明这三种锥形NAT的区别：假设内网主机(192.168.0.8:4000)发往外网的报文，经过NAT以后源地址和端口映射为(1.2.3.4:6200)，那么：
 
++ 完全锥形NAT(Full Cone NAT): 任何NAT网关收到的目的地址为(1.2.3.4:6200)的报文，都会被转发给内网主机(192.168.0.8)
++ 受限锥形NAT(Restricted Cone NAT): 只有内网主机(192.168.0.8)先给外网服务器(5.6.7.8)发送一个报文后，NAT网关收到的来自外网服务器(5.6.7.8)的，且目的地址为(1.2.3.4:6200)的报文，才会被转发给内网主机(192.168.0.8)。也就是限制了回包的源地址。
++ 端口受限锥形NAT(Port Restricted Cone NAT): 只有内网主机(192.168.0.8)先给外网服务器(5.6.7.8:8000)发送一个报文后，NAT网关收到的来自外网服务器(5.6.7.8:8000)，且目的地址为(1.2.3.4:6200)的报文，才会被转发给内网主机(192.168.0.8)。也就是回包的源地址和端口都受限。
 
 ## NAT穿越(NAT Traversal)
 
+  在实际场景中，绝大多数用的是`NAPT`，也就是会NAT网关会改变报文的源地址和端口。而某些应用层协议需要使用传输层的端口信息，一些应用层协议甚至会会携带下层的地址和端口信息，这样如果经过NAT后，修改了报文的源地址和端口，但是没有修改应用层里的信息，应用层协议就会失败。为了让应用层协议穿过NAT运作，需要NAT穿越(NAT Traversal)技术。
 
 目前常用的`NAT穿越`技术如下：
 
@@ -38,7 +42,6 @@ NAPT可分为`锥形NAT(Cone NAT)`和`对称NAT(Symmetric NAT)`。`锥形NAT`是
 #### STUN介绍
 
 有两个协议的缩写是STUN，分别是`RFC3489(Simple Traversal of UDP Through NAT)`和`RFC5389(Session Traversal Utilities for NAT)`。
-
 
 #### TURN介绍
 
